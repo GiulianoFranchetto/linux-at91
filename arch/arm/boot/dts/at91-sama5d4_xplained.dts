@@ -90,9 +90,9 @@
 
 			i2c0: i2c@f8014000 {
 				status = "okay";
-				lps25h@5c {
+				lps25h@5d {
 			        	compatible = "st,lps25h-press";
-			        	reg = <0x5c>;
+			        	reg = <0x5d>;
 			    	};
 			};
 
