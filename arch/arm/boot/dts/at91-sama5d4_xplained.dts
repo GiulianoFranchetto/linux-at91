@@ -90,6 +90,10 @@
 
 			i2c0: i2c@f8014000 {
 				status = "okay";
+				lps25h@5c {
+			        	compatible = "st,lps25h-press";
+			        	reg = <0x5c>;
+			    	};
 			};
 
 			macb0: ethernet@f8020000 {
@@ -245,9 +249,4 @@
 			linux,default-trigger = "heartbeat";
 		};
 	};
-	
-	lsp25h@5D {
-        	compatible = "st,lps25h-press";
-        	reg = <0x5D>;
-    	};
 };
