@@ -939,10 +939,6 @@
 				#size-cells = <0>;
 				clocks = <&twi0_clk>;
 				status = "ok";
-				lsp25h@58 {
-		                	compatible = "st,lps25h-press";
-		                	reg = <58>;
-		            	};
 			};
 
 			tcb0: timer@f801c000 {
