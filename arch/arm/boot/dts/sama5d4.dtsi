@@ -938,7 +938,7 @@
 				#address-cells = <1>;
 				#size-cells = <0>;
 				clocks = <&twi0_clk>;
-				status = "disabled";
+				status = "ok";
 			};
 
 			tcb0: timer@f801c000 {
