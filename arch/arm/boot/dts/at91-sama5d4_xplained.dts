@@ -245,4 +245,9 @@
 			linux,default-trigger = "heartbeat";
 		};
 	};
+	
+	lsp25h@5D {
+        	compatible = "st,lps25h-press";
+        	reg = <0x5D>;
+    	};
 };
