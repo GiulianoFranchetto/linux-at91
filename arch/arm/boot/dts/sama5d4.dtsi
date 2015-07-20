@@ -923,7 +923,7 @@
 			};
 
 			i2c0: i2c@f8014000 {
-				compatible = "atmel,at91sam9x5-i2c", "st,lps25h-press";
+				compatible = "atmel,at91sam9x5-i2c";
 				reg = <0xf8014000 0x4000>;
 				interrupts = <32 IRQ_TYPE_LEVEL_HIGH 6>;
 				dmas = <&dma1
@@ -939,6 +939,10 @@
 				#size-cells = <0>;
 				clocks = <&twi0_clk>;
 				status = "ok";
+				lsp25h@58 {
+		                	compatible = "st,lps25h-press";
+		                	reg = <58>;
+		            	};
 			};
 
 			tcb0: timer@f801c000 {
