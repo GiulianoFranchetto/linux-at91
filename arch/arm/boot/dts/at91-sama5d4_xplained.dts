@@ -173,7 +173,7 @@
 			
 			pwm0: pwm@f800c000 {
 				pinctrl-names = "default";
-				pinctrl-0 = <&pinctrl_pwm0_pwmh0_0 &pinctrl_pwm0_pwmh1_0>;
+				pinctrl-0 = <&pinctrl_pwm0_pwmh0_0>;
 				status = "okay";
 			};
 
