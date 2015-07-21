@@ -95,7 +95,7 @@
 			        	reg = <0x5d>;
 			    	};
 
-				lsm6ds0@0x6B {
+				lsm6ds0@6b {
 					compatible = "st,lsm6ds0";
 					reg = <0x6B>;
 					rot-matrix = /bits/ 16 <(1) (0) (0)
@@ -110,8 +110,8 @@
 					aa-filter-bw = <0>;
 				};
 				 lis3mdl@1e {
-					compatible = "st,lis3mdl";
-					reg = <0x1E>;
+					compatible = "st,lis3mdl-magn";
+					reg = <0x1e>;
 				};
 			};
 			
