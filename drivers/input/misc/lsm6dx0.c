@@ -2114,6 +2114,9 @@ static ssize_t attr_set_pmode(struct kobject *kobj,
 }
 #endif
 
+/**
+* 0666 changed to 0664 : refer to https://github.com/torvalds/linux/commit/58f86cc89c3372d3e61d5b71e5513ec5a0b02848
+**/
 static struct kobj_attribute poll_attr_acc =
 	__ATTR(pollrate_ms, 0664, attr_get_polling_rate_acc,
 						attr_set_polling_rate_acc);
@@ -2127,15 +2130,15 @@ static struct kobj_attribute aa_filter_attr  =
 static struct kobj_attribute temp_attr  =
 	__ATTR(temperature, 0664, attr_get_temp, NULL);
 static struct kobj_attribute poll_attr_gyr =
-	__ATTR(pollrate_ms, 0666, attr_get_polling_rate_gyr,
+	__ATTR(pollrate_ms, 0664, attr_get_polling_rate_gyr,
 						attr_set_polling_rate_gyr);
 static struct kobj_attribute enable_attr_gyr =
-	__ATTR(enable_device, 0666, attr_get_enable_gyr, attr_set_enable_gyr);
+	__ATTR(enable_device, 0664, attr_get_enable_gyr, attr_set_enable_gyr);
 static struct kobj_attribute range_attr_gyr =
-	__ATTR(range, 0666, attr_get_range_gyr, attr_set_range_gyr);
+	__ATTR(range, 0664, attr_get_range_gyr, attr_set_range_gyr);
 #ifdef CONFIG_INPUT_LSM6DX0_S_MODEL_LP
 static struct kobj_attribute pmode_attr =
-	__ATTR(pmode, 0666, attr_get_pmode, attr_set_pmode);
+	__ATTR(pmode, 0664, attr_get_pmode, attr_set_pmode);
 #endif
 
 static struct attribute *attributes_acc[] = {
