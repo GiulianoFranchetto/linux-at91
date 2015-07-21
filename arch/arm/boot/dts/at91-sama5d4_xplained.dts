@@ -147,6 +147,10 @@
 			watchdog@fc068640 {
 				status = "okay";
 			};
+			
+			pwm0: pwm@f800c000 {
+				status="ok";
+			};
 
 			pinctrl@fc06a000 {
 				board {
