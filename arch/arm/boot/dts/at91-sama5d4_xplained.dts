@@ -90,10 +90,10 @@
 
 			i2c0: i2c@f8014000 {
 				status = "okay";
-				/*lps25h@5d {
+				lps25h@5d {
 			        	compatible = "st,lps25h-press";
 			        	reg = <0x5d>;
-			    	};*/
+			    	};
 			};
 
 			macb0: ethernet@f8020000 {
