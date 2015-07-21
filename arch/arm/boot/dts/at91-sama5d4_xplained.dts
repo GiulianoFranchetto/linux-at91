@@ -94,11 +94,34 @@
 			        	compatible = "st,lps25h-press";
 			        	reg = <0x5d>;
 			    	};
+
+				lsm6ds0@0x6B {
+					compatible = "st,lsm6ds0";
+					reg = <0x6B>;
+					rot-matrix = /bits/ 16 <(1) (0) (0)
+								(0) (1) (0)
+								(0) (0) (1)>;
+					g-poll-interval = <100>;
+					g-min-interval = <2>;
+					g-fs-range = <0>;
+					x-poll-interval = <100>;
+					x-min-interval = <1>;
+					x-fs-range = <0>;
+					aa-filter-bw = <0>;
+				};
+				 lis3mdl@1e {
+					compatible = "st,lis3mdl";
+					reg = <0x1E>;
+				};
 			};
 			
 			i2c2: i2c@f8024000 {
 				status = "okay";
 				lps25h@5d {
+			        	compatible = "st,lps25h-press";
+			        	reg = <0x5d>;
+			    	};
+				lps25h@5f {
 			        	compatible = "st,lps25h-press";
 			        	reg = <0x5d>;
 			    	};
@@ -149,7 +172,7 @@
 			};
 			
 			pwm0: pwm@f800c000 {
-				status="ok";
+				status = "okay";
 			};
 
 			pinctrl@fc06a000 {
