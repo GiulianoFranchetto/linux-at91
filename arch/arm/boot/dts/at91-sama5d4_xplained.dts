@@ -97,7 +97,7 @@
 
 				lsm6ds0@6b {
 					compatible = "st,lsm6ds0";
-					reg = <0x6B>;
+					reg = <0x6b>;
 					rot-matrix = /bits/ 16 <(1) (0) (0)
 								(0) (1) (0)
 								(0) (0) (1)>;
@@ -111,6 +111,7 @@
 				};
 				 lis3mdl@1e {
 					compatible = "st,lis3mdl-magn";
+					st,drdy-int-pin=<1>;
 					reg = <0x1e>;
 				};
 			};
@@ -172,8 +173,7 @@
 			};
 			
 			pwm0: pwm@f800c000 {
-				pinctrl-names = "default";
-				pinctrl-0 = <&pinctrl_pwm0_pwmh0_0>;
+				compatible="atmel,sama5d3-pwm";
 				status = "okay";
 			};
 
