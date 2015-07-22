@@ -173,8 +173,8 @@
 			};
 			
 			pwm0: pwm@f800c000 {
-				compatible="atmel,sama5d3-pwm";
-				pinctrl-0 = <&pinctrl_pwm0_pwmh0_0 &pinctrl_pwm0_pwmh0_1>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&pinctrl_pwm0_pwmh0_0>;
 				status = "okay";
 			};
 
