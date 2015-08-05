@@ -382,6 +382,24 @@
 					clocks = <&plla>;
 				};
 
+				audio_pll_frac: audiopll_fracck {
+					compatible = "atmel,sama5d2-clk-audio-pll-frac";
+					#clock-cells = <0>;
+					clocks = <&main>;
+				};
+
+				audio_pll_pad: audiopll_padck {
+					compatible = "atmel,sama5d2-clk-audio-pll-pad";
+					#clock-cells = <0>;
+					clocks = <&audio_pll_frac>;
+				};
+
+				audio_pll_pmc: audiopll_pmcck {
+					compatible = "atmel,sama5d2-clk-audio-pll-pmc";
+					#clock-cells = <0>;
+					clocks = <&audio_pll_frac>;
+				};
+
 				utmi: utmick {
 					compatible = "atmel,at91sam9x5-clk-utmi";
 					#clock-cells = <0>;
@@ -663,6 +681,12 @@
 						reg = <47>;
 						atmel,clk-output-range = <0 83000000>;
 					};
+
+					classd_clk: classd_clk {
+						#clock-cells = <0>;
+						reg = <59>;
+						atmel,clk-output-range = <0 83000000>;
+					};
 				};
 
 				periph64ck {
@@ -725,6 +749,16 @@
 						#clock-cells = <0>;
 						reg = <46>;
 					};
+
+					qspi0_clk: qspi0_clk {
+						#clock-cells = <0>;
+						reg = <52>;
+					};
+
+					qspi1_clk: qspi1_clk {
+						#clock-cells = <0>;
+						reg = <53>;
+					};
 				};
 
 				gck {
@@ -732,7 +766,7 @@
 					#address-cells = <1>;
 					#size-cells = <0>;
 					interrupt-parent = <&pmc>;
-					clocks = <&clk32k>, <&main>, <&plladiv>, <&utmi>, <&mck>;
+					clocks = <&clk32k>, <&main>, <&plladiv>, <&utmi>, <&mck>, <&audio_pll_pmc>;
 
 					sdmmc0_gclk: sdmmc0_gclk {
 						#clock-cells = <0>;
@@ -761,7 +795,35 @@
 						reg = <38>;
 						atmel,clk-output-range = <0 83000000>;
 					};
+
+					classd_gclk: classd_gclk {
+						#clock-cells = <0>;
+						reg = <59>;
+						atmel,clk-output-range = <0 100000000>;
+					};
 				};
+			};
+
+			qspi0: qspi@f0020000 {
+				compatible = "atmel,sama5d2-qspi";
+				reg = <0xf0020000 0x100>,
+				      <0xd0000000 0x08000000>;
+				interrupts = <52 IRQ_TYPE_LEVEL_HIGH 7>;
+				clocks = <&qspi0_clk>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				status = "disabled";
+			};
+
+			qspi1: qspi@f0024000 {
+				compatible = "atmel,sama5d2-qspi";
+				reg = <0xf0024000 0x100>,
+				      <0xd8000000 0x08000000>;
+				interrupts = <53 IRQ_TYPE_LEVEL_HIGH 7>;
+				clocks = <&qspi1_clk>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				status = "disabled";
 			};
 
 			sha@f0028000 {
@@ -1080,6 +1142,19 @@
 				interrupt-controller;
 				#interrupt-cells = <2>;
 				clocks = <&pioA_clk>;
+			};
+
+			classd: classd@fc048000 {
+				compatible = "atmel,sama5d2-classd";
+				reg = <0xfc048000 0x100>;
+				interrupts = <59 IRQ_TYPE_LEVEL_HIGH 7>;
+				dmas = <&dma0
+					(AT91_XDMAC_DT_MEM_IF(0) | AT91_XDMAC_DT_PER_IF(1)
+					| AT91_XDMAC_DT_PERID(47))>;
+				dma-names = "tx";
+				clocks = <&classd_clk>, <&classd_gclk>, <&audio_pll_pmc>;
+				clock-names = "pclk", "gclk", "aclk";
+				status = "disabled";
 			};
 		};
 	};
