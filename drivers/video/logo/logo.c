@@ -16,6 +16,7 @@
 #ifdef CONFIG_M68K
 #include <asm/setup.h>
 #endif
+extern const struct linux_logo logo_itl_clut224;
 
 static bool nologo;
 module_param(nologo, bool, 0);
@@ -59,6 +60,10 @@ const struct linux_logo * __init_refok fb_find_logo(int depth)
 	}
 	
 	if (depth >= 8) {
+#ifdef CONFIG_LOGO_ITL_CLUT224
+ 		/* Gentoo-ised logo */ 
+		logo = &logo_itl_clut224;
+#endif
 #ifdef CONFIG_LOGO_LINUX_CLUT224
 		/* Generic Linux logo */
 		logo = &logo_linux_clut224;

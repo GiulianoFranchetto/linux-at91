@@ -1,5 +1,6 @@
 # Makefile for the Linux logos
 
+obj-$(CONFIG_LOGO_ITL_CLUT224) 		+= logo_itl_clut224.o
 obj-$(CONFIG_LOGO)			+= logo.o
 obj-$(CONFIG_LOGO_LINUX_MONO)		+= logo_linux_mono.o
 obj-$(CONFIG_LOGO_LINUX_VGA16)		+= logo_linux_vga16.o
