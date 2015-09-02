@@ -16,7 +16,6 @@
 #ifdef CONFIG_M68K
 #include <asm/setup.h>
 #endif
-extern const struct linux_logo logo_itl_clut224;
 
 static bool nologo;
 module_param(nologo, bool, 0);
