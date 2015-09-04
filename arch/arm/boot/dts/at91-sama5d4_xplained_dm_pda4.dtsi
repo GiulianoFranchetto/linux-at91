@@ -60,10 +60,10 @@
 				atmel_mxt_ts@4a {
 					compatible = "atmel,atmel_mxt_ts";
 					reg = <0x4a>;
-					interrupt-parent = <&pioE>;
+					/* interrupt-parent = <&pioE>;
 					interrupts = <9 0x0>;
 					pinctrl-names = "default";
-					pinctrl-0 = <&pinctrl_mxt_ts>;
+					pinctrl-0 = <&pinctrl_mxt_ts>; */
 				};
 			};
 
