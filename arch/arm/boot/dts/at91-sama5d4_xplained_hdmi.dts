@@ -95,7 +95,7 @@
 			};
 
 			spi0: spi@f8010000 {
-				cs-gpios = <&pioC 3 0>, <&pioD 16 0>, <0>, <0>;
+				cs-gpios = <&pioC 3 0>, <&pioC 6 0>, <0>, <0>;
 				status = "okay";
 				m25p80@0 {
 					compatible = "atmel,at25df321a";
